@@ -1,27 +1,23 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
-
-var client = require('electron-connect').client;
+const fs = require('fs')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win
+let win;
 
-function createWindow () {
-  // Create the browser window.
+function createWindow() {
   win = new BrowserWindow({width: 800, height: 600})
-  client.create(win);
 
   // and load the index.html of the app.
-  win.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
+  refreshWindow();
 
   // Open the DevTools.
   win.webContents.openDevTools()
+
+  //auto-reload
+  fs.watch('dist', autoreload);
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -54,5 +50,15 @@ app.on('activate', () => {
   }
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+function refreshWindow() {
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, 'index.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
+}
+
+function autoreload(e, filename) {
+  console.log(`[${(new Date).toISOString()}] - reload`);
+  refreshWindow();
+}

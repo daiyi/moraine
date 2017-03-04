@@ -1,0 +1,87 @@
+$black: #222;
+$white: #ddd;
+$highlight-color: #1FFFBF;
+
+html {
+  position: relative;
+  min-height: 100%;
+  background: $black;
+  color: $white;
+}
+
+body {
+  font-family: Courier New, Courier6, monospace;
+  margin: 0;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content {
+  margin: 20px 0;
+}
+
+.container {
+  margin: 0 20px;
+  max-width: 700px;
+}
+.container-fluid {
+  width: 100%;
+  position: relative;
+}
+
+h1 {
+  font-size: 24px;
+}
+h1 a, h1 a:visited, h1 a:hover {
+  color: #000000;
+  border: none;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+textarea {
+  width: 100%;
+  height: 10em;
+  background: transparent;
+  color: $white;
+}
+
+[contenteditable="true"]:focus {
+    outline: none;
+    border: $highlight-color;
+}
+
+.select-file {
+  margin: 10px 10px 10px 0;
+}
+.select-file::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.select-file::before {
+  content: 'select file';
+  color: $white;
+  display: inline-block;
+  background: $black;
+  border: none;
+  padding: 5px 8px;
+  outline: none;
+  border: 1px solid $white;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.select-file:hover::before {
+  border-color: $highlight-color;
+}
+.select-file:active {
+  outline: 0;
+}

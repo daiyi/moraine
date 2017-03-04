@@ -1,3 +1,8 @@
+// to use:
+// `npm i --save-dev electron-connect`
+// add `client.create(browser_window_object)` to main.js
+// `node dev-server.js`
+
 'use strict';
 const fs = require('fs')
 
@@ -8,5 +13,5 @@ let reloader = function(e, filename) {
   electron.reload()
 }
 
-fs.watch('index.html', reloader);
+fs.watch('dist', reloader);
 electron.start();
