@@ -1,0 +1,20 @@
+{
+  "name": "moraine",
+  "version": "0.0.1",
+  "description": "a minimalist plaintext and markdown editor/note-taking organiser",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "text editor",
+    "plaintext",
+    "markdown",
+    "notebook"
+  ],
+  "author": "daiyi <daiyitastic@gmail.com>",
+  "license": "GPL-3.0+",
+  "devDependencies": {
+    "electron": "^1.6.1"
+  }
+}
