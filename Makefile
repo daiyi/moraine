@@ -8,14 +8,17 @@ SRC = src
 
 default: build serve
 
+run:
+	make serve & watch make build
+
 build: $(DIST)/index.html $(DIST)/main.css $(DIST)/main.js $(DIST)/app.js
 
 serve:
 	electron .
 
 # see dev-server.js for instructions
-serve-electron-connect:
-	node dev-server.js
+# serve-electron-connect:
+# 	node dev-server.js
 
 $(DIST)/main.css : $(SRC)/css/*.scss
 	node-sass $(SRC)/css/main.scss -o $(DIST)

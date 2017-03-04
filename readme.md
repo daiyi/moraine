@@ -4,4 +4,4 @@ install: `npm i`
 
 run: `make`
 
-develop: `watch make build`, `make serve`
+develop (with autoreload): `make serve`
