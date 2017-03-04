@@ -1,11 +1,9 @@
 PATH  := node_modules/.bin:$(PATH)
 SHELL := /bin/bash
 
-default: index.html main.js
-	electron . &
+default:
+	node server.js
 
-reload:
-	reload
 
 clean:
 	echo "todo"
