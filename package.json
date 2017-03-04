@@ -2,6 +2,11 @@
   "name": "moraine",
   "version": "0.0.1",
   "description": "a minimalist plaintext and markdown editor/note-taking organiser",
+  "author": "daiyi <daiyitastic@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daiyi/moraine"
+  },
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +17,6 @@
     "markdown",
     "notebook"
   ],
-  "author": "daiyi <daiyitastic@gmail.com>",
   "license": "GPL-3.0+",
   "devDependencies": {
     "electron": "^1.6.1",
