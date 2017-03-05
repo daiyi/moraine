@@ -6,7 +6,7 @@ SRC = src
 
 .PHONY : default serve-dev clean
 
-default: build serve
+default: serve
 
 run:
 	make serve & watch make build
@@ -14,7 +14,7 @@ run:
 build: $(DIST)/index.html $(DIST)/main.css $(DIST)/main.js $(DIST)/app.js
 
 serve:
-	electron .
+	make build; electron .
 
 # see dev-server.js for instructions
 # serve-electron-connect:
