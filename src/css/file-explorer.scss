@@ -1,91 +1,93 @@
 .sidebar {
   font-size: 14px;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-content: stretch;
-  height: 100vh;
+  height: 100%;
   width: 200px;
   background: darken($black, 3);
   color: darken($white, 10);
 
   .sidebar-header {
     padding: 10px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    button {
+      font-size: 12px;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+      display: inline-block;
+      padding: 0.5em 1em;
+      background: transparent;
+      color: $white;
+      border: 1px solid $white;
+
+      label {
+        max-width: 80%;
+      }
+    }
+
+    .select-file {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .select-file + label {
+        max-width: 80%;
+        font-size: 12px;
+        font-weight: 700;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        display: inline-block;
+        overflow: hidden;
+        padding: 0.5em 1em;
+        color: $white;
+        border: 1px solid $white;
+    }
+
+    .select-file:focus + label,
+    .select-file + label:hover,
+    button:hover
+    button:active {
+        color: $black;
+        background: $white;
+        outline: 0;
+    }
   }
 
   .sidebar-content {
-    padding: 10px;
-    flex: 1 1 auto;
-    overflow: auto;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover{
+          background: lighten($black, 10);
+        }
+      }
+    }
   }
-}
-
-
-
-[contenteditable="true"]:focus,
-textarea:focus {
-    outline: none;
-    border: none;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  li {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-button {
-  font-size: 12px;
-  font-weight: 700;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
-  display: inline-block;
-  padding: 0.5em 1em;
-  background: transparent;
-  color: $white;
-  border: 1px solid $white;
-
-  label {
-    max-width: 80%;
-  }
-}
-
-.select-file {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-}
-
-.select-file + label {
-    max-width: 80%;
-    font-size: 12px;
-    font-weight: 700;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    padding: 0.5em 1em;
-    color: $white;
-    border: 1px solid $white;
-}
-
-.select-file:focus + label,
-.select-file + label:hover,
-button:hover
-button:active {
-    color: $black;
-    background: $white;
-    outline: 0;
 }
