@@ -7,16 +7,31 @@
     <link rel="stylesheet" href="main.css"></link>
   </head>
   <body>
+
     <div class="page">
-      <div class="content">
-        <div class="container">
-
-          <label class="select-file-container">
-            <input type="file" class="select-file" id="select-file">
-          </label>
-
-          <textarea id="editor"></textarea>
+      <div class="sidebar">
+        <header class="sidebar-header">
+          <div class="nav">
+              <ul>
+                <li>
+                  <input type="file" id="select-file" class="select-file"/>
+                  <label for="select-file">load</label>
+                </li>
+                <li>
+                  <button type="button" id="save-file" class="save-file">
+                    <label for="save-file">save</label>
+                  </button>
+                </li>
+              </ul>
+          </div>
+        </header>
+        <div class="sidebar-content">
+          <p>hello.txt</p>
+          <p>potato.txt</p>
         </div>
+      </div>
+      <div class= "content">
+        <textarea id="editor"></textarea>
       </div>
     </div>
 

@@ -1,3 +1,8 @@
+const app = require('electron').remote;
+const dialog = app.dialog;
+const fs = require('fs');
+
+
 function getEditor() {
   return document.querySelector('#editor');
 }
@@ -5,8 +10,10 @@ function getEditor() {
 function loadFile(file) {
   let reader = new FileReader();
   reader.onload = function(e) {
+    console.log(e.target.result);
     getEditor().value = e.target.result;
-    // getEditor().value = reader.readAsText(file);
+
+    console.log(`file loaded: ${file.name}`);
   };
 
   reader.readAsText(file);
@@ -16,10 +23,37 @@ function handleFileSelection(event) {
   let file = event.target.files[0];
 
   if (file) {
-    // console.log(file);
-    console.log(`file loaded: ${file.name}`);
     loadFile(file);
   }
 }
 
+
+
+// ----------------- //
+
+var filepath = "/home/daiyi/nets/moraine/data/notes.txt";
+var content = "NEW STUFF";
+
+function saveChanges(filepath,content){
+    fs.writeFile(filepath, content, function (err) {
+        if(err){
+            alert("An error ocurred updating the file"+ err.message);
+            console.log(err);
+            return;
+        }
+
+        console.log("The file has been succesfully saved");
+    });
+}
+
+
 document.querySelector('.select-file').addEventListener('change', handleFileSelection);
+
+document.getElementById('save-file').addEventListener('click',function(){
+    if(filepath){
+      saveChanges(filepath, getEditor().value);
+    }
+    else{
+      console.log("Please select a file first");
+    }
+}, false);
