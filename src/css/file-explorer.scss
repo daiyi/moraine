@@ -74,6 +74,8 @@
   }
 
   .sidebar-content {
+    height: 100%;
+    overflow: auto;
 
     ul {
       list-style: none;
@@ -88,6 +90,21 @@
           background: lighten($black, 10);
         }
       }
+    }
+
+    &::-webkit-scrollbar-track {
+    	border: none;
+    	background-color: transparent;
+    }
+
+    &::-webkit-scrollbar {
+    	width: 7px;
+    	background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+    	background-color: lighten($black, 10);
+      border-radius: 1px;
     }
   }
 }

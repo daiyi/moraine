@@ -1,36 +1,41 @@
 PATH  := node_modules/.bin:$(PATH)
 SHELL := /bin/bash
 
-DIST = dist
-SRC = src
-
 .PHONY : default serve-dev clean
 
-default: serve
+default: build serve
 
 run:
-	make serve & watch make build
+	make build
+	make serve &
+	watch make build
 
-build: $(DIST)/index.html $(DIST)/main.css $(DIST)/main.js $(DIST)/app.js
+build: dist/main.css js index
 
 serve:
-	make build; electron .
+	electron .
 
-# see dev-server.js for instructions
-# serve-electron-connect:
-# 	node dev-server.js
+index: dist/index.html
 
-$(DIST)/main.css : $(SRC)/css/*.scss
-	node-sass $(SRC)/css/main.scss -o $(DIST)
+dist/index.html: src/index.html
+	cp src/index.html dist/index.html
 
-$(DIST)/main.js : $(SRC)/js/main.js
-	babel $(SRC)/js -d $(DIST) --presets=babel-preset-env
+dist/main.css : src/css/*
+	node-sass src/css/main.scss -o dist
 
-$(DIST)/app.js : $(SRC)/js/app.js
-	babel $(SRC)/js -d $(DIST) --presets=babel-preset-env
+js: dist/js/ dist/main.js
 
-$(DIST)/index.html : $(SRC)/index.html
-	cp $(SRC)/index.html $(DIST)/index.html
+dist/main.js : src/main.js
+	cp src/main.js dist/main.js
+
+# dist/main.js : src/js/main.js
+# 	babel src/js/main.js --out-file dist/main.js --presets=babel-preset-env
+
+dist/js/ : src/js/*
+	babel src/js -d dist/js --presets=env,react --plugins=transform-class-properties --source-maps
+
+rawjs:
+	babel src/js -d dist/js --presets=env,react --plugins=transform-class-properties
 
 clean:
 	rm -rf dist/*

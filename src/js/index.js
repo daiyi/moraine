@@ -1,6 +1,9 @@
-const app = require('electron').remote;
-const dialog = app.dialog;
-const fs = require('fs');
+import fs from 'fs';
+
+
+// THIS IS HOW you import/require local componentsw. ???
+import path from 'path';
+module.paths.push(path.resolve('dist/js'));
 
 
 function getEditor() {
