@@ -23,7 +23,7 @@ dist/index.html: src/index.html
 dist/main.css : src/css/*
 	node-sass src/css/main.scss -o dist
 
-js: dist/js/ dist/main.js
+js: dist/node_modules/ dist/main.js
 
 dist/main.js : src/main.js
 	cp src/main.js dist/main.js
@@ -31,11 +31,16 @@ dist/main.js : src/main.js
 # dist/main.js : src/js/main.js
 # 	babel src/js/main.js --out-file dist/main.js --presets=babel-preset-env
 
-dist/js/ : src/js/*
-	babel src/js -d dist/js --presets=env,react --plugins=transform-class-properties --source-maps
+dist/node_modules/ : src/js/*
+	babel src/js -d dist/node_modules --presets=env,react --plugins=transform-class-properties --source-maps
+	mv dist/node_modules/index.js dist
 
 rawjs:
-	babel src/js -d dist/js --presets=env,react --plugins=transform-class-properties
+	babel src/js -d dist/node_modules --presets=env,react --plugins=transform-class-properties
 
 clean:
 	rm -rf dist/*
+
+cleanjs:
+	rm -rf dist/node_modules
+	rm dist/*.js
