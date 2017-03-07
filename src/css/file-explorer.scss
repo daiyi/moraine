@@ -8,6 +8,11 @@
   background: darken($black, 3);
   color: darken($white, 10);
 
+  h2 {
+    margin-bottom: 5px;
+    margin-left: 10px;
+  }
+
   .sidebar-header {
     padding: 10px;
 
@@ -85,16 +90,20 @@
 
     ul {
       list-style: none;
+      margin: 5px 0;
       padding: 0;
 
       li {
-        color: white;
-        padding: 10px;
+        color: darken($white, 15);
+        border-left: 3px solid darken($white, 60);
+        padding: 1px 5px;
+        margin: 12px 15px;
         cursor: pointer;
 
         &.file-selected,
         &:hover{
           background: lighten($black, 10);
+          color: $white;
         }
       }
     }

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { loadFile } from 'actions/actions'
 import fs from 'fs';
 
+const dir = "/home/daiyi/nets/moraine/data/"
+
 class File extends Component {
 
   static propTypes = {
@@ -30,7 +32,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleClick: (filename) => {
-      const filepath = "/home/daiyi/nets/moraine/data/" + filename
+      const filepath = dir + filename
 
       fs.readFile(filepath, 'utf8', function (err, text) {
         if (err) {
