@@ -92,6 +92,7 @@
         padding: 10px;
         cursor: pointer;
 
+        &.file-selected,
         &:hover{
           background: lighten($black, 10);
         }

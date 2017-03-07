@@ -6,6 +6,7 @@ export default (state = {}, action) => {
       });
     case 'LOAD_FILE':
       return Object.assign({}, state, {
+        filename: action.filename,
         filepath: action.filepath,
         text: action.text
       });

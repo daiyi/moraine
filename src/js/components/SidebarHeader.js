@@ -3,10 +3,16 @@ import { connect } from 'react-redux'
 import { loadFile } from 'actions/actions'
 import fs from 'fs';
 
-// todo
-const filepath = "/home/daiyi/nets/moraine/data/notes.txt";
-
 class SidebarHeader extends Component {
+  handleSaveClick() {
+    // sigh
+    const text = document.querySelector('.editor').value;
+    fs.writeFile(this.props.filepath, text, 'utf8', (err) => {
+      if (err) {
+        return console.log(err);
+      }
+    });
+  }
 
   render() {
     let {handleLoadClick} = this.props;
@@ -15,17 +21,10 @@ class SidebarHeader extends Component {
       <header className="sidebar-header">
         <div className="nav">
             <ul>
-              <li onClick={handleLoadClick}>
-              <button type="button" id="load-file" className="load-file">
-                <label htmlFor="load-file">load</label>
+              <li onClick={this.handleSaveClick.bind(this)}>
+              <button type="button" id="save-file" className="save-file">
+                <label htmlFor="save-file">save</label>
               </button>
-              </li>
-              <li onClick={() => {
-                  console.log("todo save");
-                }}>
-                <button type="button" id="save-file" className="save-file">
-                  <label htmlFor="save-file">save</label>
-                </button>
               </li>
             </ul>
         </div>
@@ -34,20 +33,10 @@ class SidebarHeader extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    handleLoadClick: () => {
-      fs.readFile(filepath, 'utf8', function (err, text) {
-        if (err) {
-          return console.log(err);
-        }
-        else {
-          console.log(text);
-          dispatch(loadFile(filepath, text));
-        }
-      });
-    }
+    filepath: state.filepath
   }
 }
 
-export default connect(null, mapDispatchToProps)(SidebarHeader)
+export default connect(mapStateToProps)(SidebarHeader)

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import * as actions from 'actions/actions'
 
-export class Editor extends Component {
+class Editor extends Component {
   static propTypes = {
     text: PropTypes.string
   }
@@ -11,7 +11,7 @@ export class Editor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: 'hello txt'
+      text: ''
     };
   }
 
@@ -29,6 +29,7 @@ export class Editor extends Component {
     return (
       <div className="content">
         <textarea
+          className="editor"
           onChange={this.handleChange.bind(this)}
           value={text}>
         </textarea>
@@ -41,5 +42,4 @@ function mapStateToProps(state, ownProps) {
   return {text: state.text};
 }
 
-const ConnectedEditor = connect(mapStateToProps, actions)(Editor)
-export default ConnectedEditor
+export default connect(mapStateToProps)(Editor)
