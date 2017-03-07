@@ -16,14 +16,14 @@ serve:
 	electron .
 
 index: dist/index.html
+js: dist/node_modules/ dist/main.js
+css: dist/main.css
 
 dist/index.html: src/index.html
 	cp src/index.html dist/index.html
 
 dist/main.css : src/css/*
 	node-sass src/css/main.scss -o dist
-
-js: dist/node_modules/ dist/main.js
 
 dist/main.js : src/main.js
 	cp src/main.js dist/main.js

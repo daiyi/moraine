@@ -21,6 +21,11 @@
         vertical-align: top;
         margin: 0;
         padding: 0;
+        padding-right: 5px;
+
+        &:last-child {
+          padding-right: 0;
+        }
       }
     }
     button {
@@ -30,13 +35,14 @@
       white-space: nowrap;
       cursor: pointer;
       display: inline-block;
-      padding: 0.5em 1em;
+      padding: 3px 5px;
       background: transparent;
       color: $white;
       border: 1px solid $white;
 
       label {
         max-width: 80%;
+        cursor: pointer;
       }
     }
 

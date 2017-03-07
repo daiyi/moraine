@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import SidebarHeader from 'components/SidebarHeader';
-import FileTree from 'components/FileTree';
+import SidebarContent from 'components/SidebarContent';
 
 class Sidebar extends Component {
-  
+
   render() {
     return (
       <div className="sidebar">
         <SidebarHeader />
-        <FileTree />
+        <SidebarContent />
       </div>
     );
   }
