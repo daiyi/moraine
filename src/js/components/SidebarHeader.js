@@ -5,6 +5,7 @@ import fs from 'fs';
 
 class SidebarHeader extends Component {
   handleSaveClick() {
+    debugger
     // sigh
     const text = document.querySelector('.editor').value;
     fs.writeFile(this.props.filepath, text, 'utf8', (err) => {
